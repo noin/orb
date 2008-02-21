@@ -1,9 +1,5 @@
 # Be sure to restart your server when you modify this file
 
-# Uncomment below to force Rails into production mode when
-# you don't control web/app server and can't set it the proper way
-# ENV['RAILS_ENV'] ||= 'production'
-
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.0.2' unless defined? RAILS_GEM_VERSION
 
@@ -25,13 +21,6 @@ Rails::Initializer.run do |config|
   # :all can be used as a placeholder for all plugins not explicitly named
   # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
 
-  # Add additional load paths for your own custom dirs
-  # config.load_paths += %W( #{RAILS_ROOT}/extras )
-
-  # Force all environments to use the same logger level
-  # (by default production uses :info, the others :debug)
-  # config.log_level = :debug
-
   # Your secret key for verifying cookie session data integrity.
   # If you change this key, all old sessions will become invalid!
   # Make sure the secret is at least 30 characters and all random, 
@@ -41,19 +30,9 @@ Rails::Initializer.run do |config|
     :secret      => '714ab33e1b73874faecc9bbd5efdb0da82cdbdcb996adfc338a56c6ab79759b965124903782e7427bae2bd4aff2d33168955b393a398bd4747dc6596ed2a4108'
   }
 
-  # Use the database for sessions instead of the cookie-based default,
-  # which shouldn't be used to store highly confidential information
-  # (create the session table with 'rake db:sessions:create')
-  # config.action_controller.session_store = :active_record_store
-
-  # Use SQL instead of Active Record's schema dumper when creating the test database.
-  # This is necessary if your schema can't be completely dumped by the schema dumper,
-  # like if you have constraints or database-specific column types
-  # config.active_record.schema_format = :sql
-
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector
 
   # Make Active Record use UTC-base instead of local time
-  # config.active_record.default_timezone = :utc
+  config.active_record.default_timezone = :utc
 end
