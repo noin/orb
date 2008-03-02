@@ -1,0 +1,224 @@
+/* ========================== */
+/* = Orb CSS - 2008 53wires = */
+/* ========================== */
+
+/* ========= */
+/* = RESET = */
+/* ========= */
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,
+fieldset,input,textarea,p,blockquote,th,td { margin:0; padding:0; }
+address,caption,cite,code,dfn,em,strong,th,var { font-style:normal; font-weight:normal; }
+h1,h2,h3,h4,h5,h6 { font-size:100%; font-weight:normal; }
+table { border-collapse:collapse; border-spacing:0; }
+q:before,q:after { content:''; }
+caption,th { text-align:left; }
+fieldset,img { border:0; }
+ol,ul { list-style:none; }
+abbr,acronym { border:0; }
+
+/* ========== */
+/* = GLOBAL = */
+/* ========== */
+
+body {
+	background: #1f1f1f;
+	font-family: Calibri, Helvetica, Verdana, sans-serif;
+	font-size: 16px;
+}
+
+a { color: #2C5ACA; text-decoration: none; }
+a:hover { background-color: #040404; color: #fff; }
+
+.tool-tip {
+	color: #fff;
+	width: 139px;
+	z-index: 13000;
+}
+ 
+.tool-title {
+	font-weight: bold;
+	font-size: 11px;
+	margin: 0;
+	color: #9FD4FF;
+	padding: 8px 8px 4px;
+	background: url(../images/global/bubble.png) top left;
+}
+ 
+.tool-text {
+	font-size: 11px;
+	padding: 4px 8px 8px;
+	background: url(../images/global/bubble.png) bottom right;
+}
+
+/* ============== */
+/* = Typography = */
+/* ============== */
+
+h1 { font-size: 200%; font-weight: bold; }
+h2 { font-size: 150%; }
+p { text-indent: 1em; margin-top: 1em; }
+
+/* ============= */
+/* = Structure = */
+/* ============= */
+
+.left-33 { float: left; width: 33%; }
+.hidden { display: none; }
+hr { clear: both; border: 0; visibility: hidden; height: 1px; }
+
+/* Box Setup */
+.Dialog { margin: 1em auto; width: 640px; background: url(../images/global/dialog_bg.png) repeat-y; }
+.Dialog .content { padding: 1px 1em 2em; background: url(../images/global/dialog_bg_right.png) repeat-y top right; }
+.Dialog .bottom, .Dialog .top, .Dialog h6{ height: 5px; clear: both; background: url(../images/global/dialog_bottom.png) repeat-x; }
+.Dialog h6 { background: url(../images/global/dialog_bottom_end.png) no-repeat top right; }
+.Dialog .top, .Dialog .top h6 { height: 2px; }
+
+/* Box Contents */
+.Dialog h2 { font-size: 120%; margin-top: 1em; }
+.Dialog p { margin-left: 2em; text-indent: 0; }
+
+/* Form Holders */
+.Dialog dl { margin: .25em 0 0 1em; }
+.Dialog dt { width: 20%; line-height: 200%; float: left; clear: left; text-align: right; margin-right: .5em; font-weight: bold; }
+.Dialog dd { width: 80%; line-height: 200%; }
+.Dialog dd a { margin-left: 1em; font-size: 10px; }
+.Dialog input { font-size: 14px; padding: 0.15em; }
+.Dialog input.submit { font-size: 12px; }
+
+
+.Dialog dl.longdt dt { width: 50%; }
+.Dialog dl.longdt dd { width: 30%; float: left; }
+.Dialog dl.longdt input { margin: 0 .25em 0 .5em; }
+
+.Dialog .agreement { overflow: auto; height: 10em; padding: .1em; margin-top: 1em; border: 2px solid #84ECF2; }
+
+/* Animation Helpers */
+.Dialog .wrapper { float: left; overflow: hidden; width: 85%; }
+
+/* Special Signup Overrides */
+.Dialog.signup .wrapper { width: 100%; }
+.Dialog.signup .signupWrapper { overflow: hidden; width: 100%; }
+.Dialog.signup #CountryGuess { float: left; display: inline; }
+.Dialog.signup #CountryPicker { float: left; display: none; }
+.Dialog.signup div.fieldWithErrors { display: inline; }
+
+#Login, #OpenID, #ForgotLogin, #LostOpenID { width: 600px; }
+
+/* ================== */
+/* = noscript stuff = */
+/* ================== */
+
+#noscriptBackdrop { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: #1f1f1f; opacity: .75; -moz-opacity: .75; filter:alpha(opacity=75); z-index: 1; }
+#noscriptError { position: absolute; top: 25%; left: 50%; margin-left: -300px; width: 600px; background-color: #fff; border: 2px solid #84ECF2; padding: 1em; z-index: 2; }
+#noscriptError h1 { font-size: 20px; }
+#noscriptError p { font-size: 14px; }
+
+/* ========= */
+/* = Flash = */
+/* ========= */
+
+.Flash { 
+	height: 21px; 
+	padding-left: 17px; 
+	background-repeat: no-repeat; 
+	max-width: 900px;
+	margin: 0 auto 1em;
+}
+.Flash div { 
+	padding-right: 17px; 
+	line-height: 21px;
+	background-repeat: no-repeat; 
+	background-position: top right;
+	font-size: 12px;
+	color: #929292;
+	text-align: center;
+}
+
+.Flash.notice { background-image: url(../images/global/flash_notice.png); }
+.Flash.notice div { background-image: url(../images/global/flash_notice_end.png); }
+.Flash.warning { background-image: url(../images/global/flash_warning.png); }
+.Flash.warning div { background-image: url(../images/global/flash_warning_end.png); }
+.Flash.error { 
+	background-image: url(../images/global/flash_error.png);
+	height: 28px;
+}
+.Flash.error div { 
+	background-image: url(../images/global/flash_error_end.png); 
+	line-height: 28px;
+	font-weight: bold;
+	font-size: 14px;
+	color: #1f1f1f;
+}
+
+/* ========== */
+/* = HEADER = */
+/* ========== */
+
+#HeaderWrapper {
+	width: 100%;
+	height: 113px;
+	background: #fff url(../images/global/header_bg_1.png) repeat-x;
+}
+#Header { background: url(../images/global/header_bg_2.png) no-repeat; }
+#Header a #Logo { padding: 5px; }
+#Header a:hover { background: transparent; }
+
+/* ======== */
+/* = MENU = */
+/* ======== */
+
+#Menu {
+	width: 100%;
+	height: 30px;
+	background: url(../images/global/menu_bg.png) repeat-x;
+	font-size: 14px;
+}
+#Menu a { text-decoration: none; color: #929292; }
+#Menu ul, #Menu ul li { list-style: none; display: inline; }
+#Menu ul li a { line-height: 30px; }
+#Menu ul li a { margin-left: 1em; padding: .3em; }
+#Menu ul li a:hover { border-bottom: 2px solid gray; background: transparent; }
+#Menu li#MenuItemOrb {
+	background: url(../images/global/menu_item_orb_bg.png) no-repeat;
+	display: block;
+	float: left;
+	width: 156px;
+	height: 30px;
+	text-align: right;
+}
+#Menu li#MenuItemOrb a { margin-right: 50px; color: #fff; }
+#Menu li#MenuItemOrb a:hover { border-bottom: 0; }
+#Wrapper { 
+	clear: both; 
+	width: 100%;
+	background: #fff url(../images/global/page_bg.png) no-repeat;
+}
+#Container { padding: 2em; }
+
+/* ========== */
+/* = Footer = */
+/* ========== */
+
+#Footer, #Copyrights { 
+	background: url(../images/global/footer_bg.png) repeat-x;
+	position: relative;
+	color: #fff;
+	width: 100%;
+	padding-top: 10px;
+	padding-bottom: 1em;
+	min-height: 2em;
+	font-size: 11px;
+	clear: both;
+	color: #B3B3B3;
+}
+#Copyrights { display:none; min-height: 0; }
+#Footer p.Copyright { position: absolute; right: 1em; bottom: 1em; font-size: 10px; }
+#Footer p.Copyright a { text-decoration: none; color: #B3B3B3; }
+#Footer p.Copyright a { font-weight: bold; }
+#Footer .left-33 { margin: 10px 2em; }
+#Footer h2 { font-size: 14px; }
+#Footer ul, #Footer ul li { list-style: none; text-indent: 1em; }
+#Footer li:before { content: "- "; }
+#Copyrights { background-color: #fff; color: #000; opacity: 0.5; }
+#Copyrights div { padding: 2em; }
