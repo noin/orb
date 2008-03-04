@@ -28,17 +28,17 @@ protected
       when :failed
         failed_login "Sorry, the OpenID verification failed"
       when :successful
-        if @current_user = User.find_by_identity_url(identity_url)
-          @current_user.assign_openid_sreg!(registration)
+        unless @current_user = User.find_by_identity_url(identity_url)
+          @current_user = User.new(:identity_url => identity_url)
+        end
+        
+        @current_user.assign_openid_sreg!(registration)
 
-          if current_user.save
-            successful_login
-          else
-            failed_login "Your OpenID profile registration failed: " +
-              @current_user.errors.full_messages.to_sentence
-          end
+        if @current_user.save
+          successful_login
         else
-          failed_login "Sorry, no user by that identity URL exists"
+          failed_login "Your OpenID profile registration failed: " +
+          @current_user.errors.full_messages.to_sentence
         end
       else
         failed_login status.message
@@ -49,7 +49,7 @@ protected
 private
   def successful_login
     session[:user_id] = @current_user.id
-    redirect_to(root_url)
+    redirect_to(new_session_url)
   end
 
   def failed_login(message)
