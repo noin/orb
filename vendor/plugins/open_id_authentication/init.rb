@@ -1,5 +1,5 @@
 begin
-  gem 'ruby-openid', '=1.1.4'
+  gem 'ruby-openid'
   require 'openid'  
 rescue LoadError
   puts "Install the ruby-openid gem to enable OpenID support"

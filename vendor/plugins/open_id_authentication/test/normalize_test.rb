@@ -2,7 +2,7 @@ require 'test/unit'
 require 'rubygems'
 require 'active_support'
 
-RAILS_ROOT = File.dirname(__FILE__)
+RAILS_ROOT = File.dirname(__FILE__) unless defined? RAILS_ROOT
 require File.dirname(__FILE__) + "/../lib/open_id_authentication"
 
 class NormalizeTest < Test::Unit::TestCase

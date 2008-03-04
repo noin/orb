@@ -10,7 +10,8 @@ namespace :open_id_authentication do
 
     desc "Clear the authentication tables"
     task :clear => :environment do
-      OpenIdAuthentication::DbStore.gc
+      OpenIdAuthentication::DbStore.cleanup_nonces
+      OpenIdAuthentication::DbStore.cleanup_associations
     end
   end
 end
