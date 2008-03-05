@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   def self.with_openid(identity_url, registration)
     u = find_by_identity_url(identity_url) || User.new(:identity_url => identity_url)
     u.assign_openid_sreg(registration)
+    u
   end
   
   # Takes OpenID sReg data and correctly maps it to the appropriate keys in our local model.
