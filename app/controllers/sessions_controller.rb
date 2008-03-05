@@ -1,8 +1,10 @@
 class SessionsController < ApplicationController
   
+  # - GET /login
   # Renders a login form
   def new; end
   
+  # - POST /session
   # Handles OpenID Authentication
   def create
     if using_open_id?
@@ -10,6 +12,8 @@ class SessionsController < ApplicationController
     end
   end
   
+  # - GET /logout
+  # - DELETE /session
   # Destroys the user's session
   def destroy
     redirect_to(root_url)
@@ -17,9 +21,8 @@ class SessionsController < ApplicationController
 
 protected
   def open_id_authentication(identity_url)
-    authenticate_with_open_id(identity_url,
-        :required => [ :nickname, :email ],
-        :optional => :fullname) do |status, identity_url, registration|
+    authenticate_with_open_id(identity_url, :required => [ :nickname, :email ],
+                                            :optional => :fullname) do |status, identity_url, registration|
       case status.code
       when :missing
         failed_login "Sorry, the OpenID server couldn't be found"
@@ -28,11 +31,7 @@ protected
       when :failed
         failed_login "Sorry, the OpenID verification failed"
       when :successful
-        unless @current_user = User.find_by_identity_url(identity_url)
-          @current_user = User.new(:identity_url => identity_url)
-        end
-        
-        @current_user.assign_openid_sreg!(registration)
+        @current_user = User.with_openid(identity_url, registration)
 
         if @current_user.save
           successful_login
@@ -40,6 +39,7 @@ protected
           failed_login "Your OpenID profile registration failed: " +
           @current_user.errors.full_messages.to_sentence
         end
+        
       else
         failed_login status.message
       end
